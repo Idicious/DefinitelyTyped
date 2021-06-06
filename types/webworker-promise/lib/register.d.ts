@@ -2,6 +2,7 @@ export = registerWebworker;
 
 /**
  * Main function to register functions in the webworker that a callable from the main thread.
+ * Can also be an async function and / or return a Promise.
  *
  * @param register Eventhandler for `postMessage` calls from the main thread.
  *
@@ -20,7 +21,7 @@ export = registerWebworker;
  * ```
  */
 declare function registerWebworker(
-    register?: (message: any, emit: (eventName: string, data: any) => void) => Promise<any>,
+    register?: (message: any, emit: (eventName: string, data: any) => void) => any,
 ): registerWebworker.WorkerHost;
 
 declare namespace registerWebworker {
