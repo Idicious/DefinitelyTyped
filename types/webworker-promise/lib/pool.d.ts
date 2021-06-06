@@ -3,7 +3,6 @@ import NodeWorker = require('./node-worker');
 export = WorkerPool;
 
 /**
- * Workers Pool
  * Dynamic pool for workers.
  *
  * Note: It's experimental feature, and api may be changed
