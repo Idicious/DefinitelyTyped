@@ -33,7 +33,7 @@ declare class PromiseWorker {
      * ```
      */
     postMessage(
-        message: unknown,
+        message: any,
         transferableList?: Transferable[],
         onEvent?: (eventName: string, message: any) => void,
     ): Promise<any>;
