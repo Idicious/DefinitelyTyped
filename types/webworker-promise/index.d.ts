@@ -11,8 +11,8 @@ declare class PromiseWorker {
     constructor(worker: Worker | NodeWorker);
 
     /**
-     * Allows you to trigger the main worker function.
-     * The event handler function is scoped to the emit passed into the main function and is not triggered by global emits from the worker.
+     * Trigger the main worker function.
+     * The `onEvent` function is scoped to the 'emit' passed into the main function and is not triggered by global emits from the worker.
      *
      * @param message Data to send to worker
      * @param transferableList List of transferables to send to worker
@@ -39,8 +39,8 @@ declare class PromiseWorker {
     ): Promise<any>;
 
     /**
-     * Allows you to trigger operations that are registered via the `operation` function in the worker.
-     * The event handler function is scoped to the emit passed into the `operation` function and is not triggered by global emits from the worker.
+     * Trigger an operation that is registered via the `operation` function in the worker.
+     * The 'onEvent' function is scoped to the 'emit' passed into the `operation` function and is not triggered by global emits from the worker.
      *
      * @param operationName Name of the operation
      * @param message Data to send to worker
@@ -68,7 +68,7 @@ declare class PromiseWorker {
         onEvent?: (eventName: string, message: any) => void,
     ): Promise<any>;
     /**
-     * Allows you to register operations that can be triggered via the `emit` command from the worker.
+     * Register an event handler that can be triggered via the `emit` command from the worker.
      *
      * @param eventName Name of the operation
      * @param handler Event handler
@@ -92,7 +92,7 @@ declare class PromiseWorker {
      */
     on(eventName: string, handler: (...args: any[]) => void): PromiseWorker;
     /**
-     * Allows you to register operations that can be triggered via the `emit` command from the worker, will only be triggered once.
+     * Register an event handler that can be triggered via the `emit` command from the worker, will only be triggered once.
      *
      * @param eventName Name of the operation
      * @param handler Event handler
@@ -117,10 +117,10 @@ declare class PromiseWorker {
      */
     once(eventName: string, handler: (...args: any[]) => void): PromiseWorker;
     /**
-     * Allows you to emit values to the worker that can be listened to via the `on` and `once` methods.
+     * Emit an event to the worker that can be listened to via the `on` and `once` methods in the worker.
      *
      * @param eventName Name of the operation
-     * @param handler Event handler
+     * @param args Values to emit
      *
      * @example
      *

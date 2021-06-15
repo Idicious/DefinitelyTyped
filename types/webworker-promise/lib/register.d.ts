@@ -4,7 +4,7 @@ export = registerWebworker;
  * Main function to register functions in the webworker that a callable from the main thread.
  * Can also be an async function and / or return a Promise.
  *
- * @param register Eventhandler for `postMessage` calls from the main thread.
+ * @param register Event handler for `postMessage` calls from the main thread.
  *
  * @example
  *
@@ -30,7 +30,7 @@ declare namespace registerWebworker {
      */
     interface WorkerHost {
         /**
-         * Allows you to register operations that can be triggered via the `exec` command from the main thread.
+         * Register an operation that can be triggered via the `exec` command from the main thread.
          * The emit function is scoped to the event handler of the `exec` operation and does not trigger the global `on` / `once` handlers in the main thread.
          *
          * @param eventName Name of the operation
@@ -55,7 +55,7 @@ declare namespace registerWebworker {
             handler: (message: any, emit: (eventName: string, data: any) => void) => any,
         ): WorkerHost;
         /**
-         * Allows you to register operations that can be triggered via the `emit` command from the main thread.
+         * Register an event handler that can be triggered via the `emit` command from the main thread.
          *
          * @param eventName Name of the operation
          * @param handler Event handler
@@ -79,7 +79,7 @@ declare namespace registerWebworker {
          */
         on(eventName: string, handler: (...args: any[]) => void): WorkerHost;
         /**
-         * Allows you to register operations that can be triggered via the `emit` command from the main thread, will only be triggered once.
+         * Register an event handler that can be triggered via the `emit` command from the main thread, will only be triggered once.
          *
          * @param eventName Name of the operation
          * @param handler Event handler
@@ -104,10 +104,10 @@ declare namespace registerWebworker {
          */
         once(eventName: string, handler: (...args: any[]) => void): WorkerHost;
         /**
-         * Allows you to emit values to the main thread that can be listened to via the `on` and `once` methods.
+         * Emit a value to the main thread that can be listened to via the `on` and `once` methods.
          *
-         * @param eventName Name of the operation
-         * @param handler Event handler
+         * @param eventName Name of the event
+         * @param args Values to emit
          *
          * @example
          *

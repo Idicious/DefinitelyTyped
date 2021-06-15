@@ -26,8 +26,8 @@ export = WorkerPool;
 declare class WorkerPool {
     static create(workerPoolOptions: WorkerPool.WorkerPoolSrcOptions | WorkerPool.WorkerPoolCreateOptions): WorkerPool;
     /**
-     * Allows you to trigger the main worker function.
-     * The event handler function is scoped to the emit passed into the main function and is not triggered by global emits from the worker.
+     * Trigger the main worker function.
+     * The 'onEvent' function is scoped to the 'emit' passed into the main function and is not triggered by global emits from the worker.
      *
      * @param message Data to send to worker
      * @param transferableList List of transferables to send to worker
@@ -54,8 +54,8 @@ declare class WorkerPool {
     ): Promise<any>;
 
     /**
-     * Allows you to trigger operations that are registered via the `operation` function in the worker.
-     * The event handler function is scoped to the emit passed into the `operation` function and is not triggered by global emits from the worker.
+     * Trigger an operation that is registered via the `operation` function in the worker.
+     * The 'onEvent' function is scoped to the 'emit' passed into the `operation` function and is not triggered by global emits from the worker.
      *
      * @param operationName Name of the operation
      * @param message Data to send to worker
