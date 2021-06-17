@@ -1,8 +1,7 @@
 export = registerWebworker;
 
 /**
- * Main function to register functions in the webworker that a callable from the main thread.
- * Can also be an async function and / or return a Promise.
+ * Register operations and events in the webworker that are callable from the main thread.
  *
  * @param register Event handler for `postMessage` calls from the main thread.
  *
